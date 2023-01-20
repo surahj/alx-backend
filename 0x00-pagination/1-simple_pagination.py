@@ -31,13 +31,19 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """finds the correct indexes to paginate the dataset \
-            correctly and return the appropriate page of the dataset
+        """
+        Takes 2 integer arguments and returns requested page from the dataset
+        Args:
+            page (int): required page number. must be a positive integer
+            page_size (int): number of records per page. must be a +ve integer
+        Return:
+            list of lists containing required data from the dataset
         """
         assert type(page) == int and type(page_size) == int
         assert page > 0 and page_size > 0
-        start, end = index_range(page, page_size)
         dataset = self.dataset()
-        print(len(dataset))
-        return [] if (start >= len(dataset) or
-                      end >= len(dataset)) else dataset[start:end]
+        try:
+            index = index_range(page, page_size)
+            return dataset[index[0]:index[1]]
+        except IndexError:
+            return []
