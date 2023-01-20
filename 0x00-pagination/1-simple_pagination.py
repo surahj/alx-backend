@@ -43,7 +43,7 @@ class Server:
         assert page > 0 and page_size > 0
         dataset = self.dataset()
         try:
-            index = index_range(page, page_size)
-            return dataset[index[0]:index[1]]
+            start, end = index_range(page, page_size)
+            return dataset[start:end]
         except IndexError:
             return []
