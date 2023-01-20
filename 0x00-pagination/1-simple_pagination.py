@@ -41,4 +41,3 @@ class Server:
         print(len(dataset))
         return [] if (start >= len(dataset) or
                       end >= len(dataset)) else dataset[start:end]
-
