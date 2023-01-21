@@ -32,6 +32,7 @@ class Server:
         """Dataset indexed by sorting position, starting at 0
         """
         if self.__indexed_dataset is None:
+            print("Testing the microphone")
             dataset = self.dataset()
             truncated_dataset = dataset[:1000]
             self.__indexed_dataset = {
@@ -47,7 +48,11 @@ class Server:
         data = list()
         for i in range(index, index + page_size):
             if not self.indexed_dataset().get(i):
+                print("----------------------")
+                print(self.indexed_dataset().get(i))
                 next_index += 1
+                continue
+
             data.append(self.indexed_dataset().get(i))
 
         return {
