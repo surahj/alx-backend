@@ -51,7 +51,6 @@ class Server:
                 print("----------------------")
                 print(self.indexed_dataset().get(i))
                 next_index += 1
-
             data.append(self.indexed_dataset().get(i))
 
         return {
