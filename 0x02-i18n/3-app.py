@@ -8,6 +8,7 @@ from flask_babel import Babel
 app = Flask(__name__)
 babel = Babel(app)
 
+
 class Config(object):
     """
     This class is used to configure the application.
@@ -26,8 +27,9 @@ def get_locale() -> str:
     Returns:
         str: The language.
     """
-    #return request.accept_languages.best_match(app.config['LANGUAGES'])
-    return "fr"
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
 babel.init_app(app, locale_selector=get_locale)
 
 
